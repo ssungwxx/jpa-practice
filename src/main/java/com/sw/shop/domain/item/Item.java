@@ -1,6 +1,7 @@
 package com.sw.shop.domain.item;
 
 import com.sw.shop.domain.Category;
+import com.sw.shop.exception.NotEnoughStockException;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -26,4 +27,17 @@ public abstract class Item {
 
     @ManyToMany(mappedBy = "items")
     private List<Category> categories = new ArrayList<>();
+
+    public void addStock(int quantity){
+        this.stockQuantity += quantity;
+    }
+
+    public void removeStock(int quantity){
+        int restStock = this.stockQuantity - quantity;
+        if(restStock < 0){
+             throw new NotEnoughStockException("Need more stock");
+        }
+
+        this.stockQuantity = restStock;
+    }
 }
