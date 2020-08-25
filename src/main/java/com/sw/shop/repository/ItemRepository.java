@@ -21,7 +21,7 @@ public class ItemRepository {
         }
     }
 
-    public Item finaOne(Long id){
+    public Item findOne(Long id){
         return em.find(Item.class, id);
     }
 

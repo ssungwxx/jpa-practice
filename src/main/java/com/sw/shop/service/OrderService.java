@@ -12,8 +12,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
@@ -27,7 +25,7 @@ public class OrderService {
     @Transactional
     public Long order(Long memberId, Long itemId, int count){
         Member member = memberRepository.findOne(memberId);
-        Item item = itemRepository.finaOne(itemId);
+        Item item = itemRepository.findOne(itemId);
 
         Delivery delivery = new Delivery();
         delivery.setAddress(member.getAddress());

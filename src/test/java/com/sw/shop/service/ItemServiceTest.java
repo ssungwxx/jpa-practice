@@ -11,8 +11,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import static org.junit.Assert.*;
-
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @Transactional
@@ -33,6 +31,6 @@ public class ItemServiceTest {
         Long itemId = itemService.save(item);
 
         //then
-        Assertions.assertThat(itemRepository.finaOne(itemId)).isEqualTo(item);
+        Assertions.assertThat(itemRepository.findOne(itemId)).isEqualTo(item);
     }
 }
